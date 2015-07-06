@@ -1,12 +1,7 @@
 from django.conf.urls import url
 from lists.rest import views
 
-urlpatterns = [
-    url(
-        r'^$',
-        views.ListModelListView.as_view(),
-        name='index'
-    ),
+listpatterns = [
     url(
         r'^view/(?P<list_id>[\d]+)/$',
         views.TaskListView.as_view(),
@@ -31,5 +26,20 @@ urlpatterns = [
         r'^create/$',
         views.ListModelCreateView.as_view(),
         name='create'
+    ),
+    url(
+        r'^$',
+        views.ListModelListView.as_view(),
+        name='index'
     )
 ]
+
+taskpatterns = [
+    url(
+        r'^tasks/create/$',
+        views.ListTaskCreateView.as_view(),
+        name='tasks-create'
+    )
+]
+
+urlpatterns = listpatterns + taskpatterns

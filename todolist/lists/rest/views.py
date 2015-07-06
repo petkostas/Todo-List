@@ -3,6 +3,7 @@ from rest_framework import generics
 from rest_framework.renderers import JSONRenderer
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
+from lists.rest.permissions import IsOwnerOrDeny
 from lists.rest import serializers
 
 from lists.models import (
@@ -23,7 +24,7 @@ class ListModelListView(generics.ListAPIView):
     renderer_classes = (JSONRenderer,)
     serializer_class = serializers.ListSerializer
     authentication_classes = (SessionAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwnerOrDeny)
 
     def get_queryset(self):
         """
@@ -43,7 +44,7 @@ class TaskListView(generics.ListAPIView):
     renderer_classes = (JSONRenderer,)
     serializer_class = serializers.TaskSerializer
     authentication_classes = (SessionAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwnerOrDeny,)
 
     def get_queryset(self):
         """
@@ -61,8 +62,6 @@ class TaskListView(generics.ListAPIView):
         qs = self.queryset
         qs = qs.get_tasks_for_list(listid)
         qs = qs.filter(tasklist__owner_id=userid)
-        if not qs.exists():
-            raise Http404
         return qs.all()
 
 # ###############################
@@ -103,3 +102,26 @@ class ListModelCRUDView(generics.RetrieveUpdateDestroyAPIView):
         Assign the owner to the current user.
         """
         serializer.save(owner=self.request.user)
+
+
+class ListTaskCreateView(generics.CreateAPIView):
+    """
+    Create View for ListTask Model.
+    """
+    queryset = ListTaskModel.objects.all()
+    renderer_classes = (JSONRenderer,)
+    serializer_class = serializers.TaskSerializer
+    authentication_classes = (SessionAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+
+class ListTaskCRUDView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Update a Task, task is not actually destroyed, but marked as
+    done.
+    """
+    queryset = ListTaskModel.objects.all()
+    renderer_classes = (JSONRenderer,)
+    serializer_class = serializers.TaskSerializer
+    authentication_classes = (SessionAuthentication,)
+    permission_classes = (IsAuthenticated,)

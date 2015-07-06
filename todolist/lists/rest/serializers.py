@@ -45,22 +45,15 @@ class TaskSerializer(serializers.ModelSerializer):
     This is used for the detail view of a List, we display the tasks of the
     list.
     """
-    list = serializers.SerializerMethodField()
 
     class Meta:
         model = ListTaskModel
         fields = (
             'id', 'title', 'description', 'flag_done',
-            'list', 'created_at', 'modified_at'
+            'tasklist', 'created_at', 'modified_at'
         )
         extra_kwargs = {
-            'list': {'read_only': True},
-            'tasklist': {'write_only': True}
-        }
-
-    def get_list(self, obj):
-        return {
-            'id': obj.tasklist.pk,
-            'title': obj.tasklist.title,
-            'owner': obj.tasklist.owner.get_username()
+            'tasklist': {
+                'write_only': True
+            }
         }

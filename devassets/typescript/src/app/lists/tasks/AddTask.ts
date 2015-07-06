@@ -4,20 +4,21 @@ module app.lists {
     export class AddTask {
 
         showform: boolean = false;
-        task = <app.lists.TaskItem>{};
+        task = <app.lists.tasks.TaskItem>{};
         tasks: app.lists.tasks.TaskItem[];
+        tasklistId: number;
 
         static $inject = [
             'taskService'
         ];
 
         constructor(
-            private taskService: app.lists.ListsService
+            private taskService: app.lists.tasks.TaskService
         ){
         }
 
         private _reset() {
-            this.task = <app.lists.TaskItem>{};
+            this.task = <app.lists.tasks.TaskItem>{};
         }
 
         toggleForm() {
@@ -25,6 +26,8 @@ module app.lists {
         }
 
         addList() {
+            this.task.tasklist = this.tasklistId;
+            this.task.flag_done = false;
             this.taskService.addNewTask(this.task).then((results: any) => {
                 this.tasks.push(_.clone(results.data));
             });
@@ -40,7 +43,8 @@ module app.lists {
                 templateUrl: 'lists/tasks/AddTask.tpl.html',
                 replace: true,
                 scope: {
-                    tasks: '='
+                    tasks: '=',
+                    tasklistId: '@listId'
                 },
                 link: AddTask.link
             };

@@ -18,8 +18,8 @@ module app {
                 'get': '/rest/lists/view/<%= pk %>/'
             },
             'tasks': {
-                'create': '/rest/tasks/create/',
-            }
+                'create': '/rest/lists/tasks/create/',
+            },
             'user': {
                 'login': '/rest/users/login/',
                 'register': '/rest/users/create/',

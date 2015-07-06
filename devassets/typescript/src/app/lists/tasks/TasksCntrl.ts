@@ -4,7 +4,8 @@ module app.lists.tasks {
 
     export class TasksCntrl {
 
-        private _listId: number;
+        listId: number;
+        tasks: app.lists.tasks.TaskItem[] = [];
 
         static $inject = [
             '$stateParams',
@@ -15,16 +16,11 @@ module app.lists.tasks {
             private $stateParams: ng.ui.IStateParamsService,
             private taskService: app.lists.tasks.TaskService
         ) {
-            this._listId = parseInt(
+            this.listId = parseInt(
                 _.get(this.$stateParams, 'listID').toString());
-        }
-
-        get tasks() {
-            if( !this._listId ) {
-                return null;
-            } else {
-                return this.taskService.getTasks(this._listId);
-            }
+            this.taskService.getTasks(this.listId).then( (results: any) => {
+                this.tasks = results.data;
+            })
         }
     }
 }

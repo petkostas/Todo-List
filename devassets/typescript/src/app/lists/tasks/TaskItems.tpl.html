@@ -1,0 +1,10 @@
+<div class="tasks">
+	<div class="item-widget center-block" ng-repeat="task in taskitems.tasks track by task.id" tooltip="{{ task.description }}">
+		<span class="title">
+			{{ task.title }}
+		</span>
+		<span class="status" ng-click="taskitems.toggletask(task)">
+			<i class="fa" ng-class="{'fa-circle-o':!task.flag_done, 'fa-check-circle-o':task.flag_done }" data-toggle="tooltip" title="Click to Toggle Task status" data-placement="top" ng-click="taskitems.toggleTask(task)"></i>
+		</span>
+	</div>
+</div>

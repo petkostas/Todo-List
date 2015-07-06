@@ -30,5 +30,12 @@ module app.lists.tasks {
                 task
             );
         }
+
+        toggleTask(task_id: number, status: boolean): ng.IPromise<any> {
+            return this.$http.patch(
+                this.urlService.parseUrl('tasks.update', { 'pk': task_id }),
+                { 'id': task_id, 'flag_done': status }
+                );
+        }
     }
 }
