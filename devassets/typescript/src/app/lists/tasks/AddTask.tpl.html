@@ -1,6 +1,6 @@
 <div class="add-task-holder center-block text-center">
 	<div class="add-task-form" ng-show="addtaskcntrl.showform">
-		<form name="addListForm" ng-submit="addtaskcntrl.addList()" class="task-form">
+		<form name="addListForm" class="task-form">
 			<div class="form-group">
 				<label for="title">Task Title</label>
 				<input type="text" class="form-control" id="title" placeholder="Task Title" ng-model="addtaskcntrl.task.title">
@@ -10,7 +10,7 @@
 				<input type="text" class="form-control" id="description" placeholder="Task Description" ng-model="addtaskcntrl.task.description">
 			</div>
 			<div class="form-group">
-				<input type="submit" class="btn btn-default add-task" value="Add Task">
+				<input type="submit" class="btn btn-default add-task" value="Add Task" ng-click="addtaskcntrl.addList()">
 				<button class="btn btn-danger cancel" ng-click="addtaskcntrl.cancelTask()">Cancel</button>
 			</div>
 		</form>

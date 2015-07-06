@@ -19,6 +19,7 @@ module app {
             },
             'tasks': {
                 'create': '/rest/lists/tasks/create/',
+                'update': '/rest/lists/tasks/update/<%= pk %>/'
             },
             'user': {
                 'login': '/rest/users/login/',

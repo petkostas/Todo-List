@@ -39,6 +39,11 @@ taskpatterns = [
         r'^tasks/create/$',
         views.ListTaskCreateView.as_view(),
         name='tasks-create'
+    ),
+    url(
+        r'^tasks/update/(?P<pk>[\d]+)/$',
+        views.ListTaskCRUDView.as_view(),
+        name='tasks-update'
     )
 ]
 

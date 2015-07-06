@@ -34,6 +34,11 @@ module app.lists {
             this._reset();
         }
 
+        cancelTask() {
+            this._reset();
+            this.showform = false;
+        }
+
         static directive(): ng.IDirective {
             return {
                 restrict: 'E',
