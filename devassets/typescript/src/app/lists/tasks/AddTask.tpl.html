@@ -1,0 +1,21 @@
+<div class="add-task-holder center-block text-center">
+	<div class="add-task-form" ng-show="addtaskcntrl.showform">
+		<form name="addListForm" ng-submit="addtaskcntrl.addList()" class="task-form">
+			<div class="form-group">
+				<label for="title">List Title</label>
+				<input type="text" class="form-control" id="title" placeholder="List Title" ng-model="addtaskcntrl.task.title">
+			</div>
+			<div class="form-group">
+				<label for="description">List Description</label>
+				<input type="text" class="form-control" id="description" placeholder="List Description" ng-model="addtaskcntrl.task.description">
+			</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-default add-task" value="Add Task">
+				<button class="btn btn-danger cancel" ng-click="addtaskcntrl.cancelTask()">Cancel</button>
+			</div>
+		</form>
+	</div>
+	<div class="add-task-actions text-center">
+		<button class="btn btn-primary add-new-task" ng-click="addtaskcntrl.toggleForm()"><i class="fa fa-plus icon"></i>Add a new Task</button>
+	</div>
+</div>

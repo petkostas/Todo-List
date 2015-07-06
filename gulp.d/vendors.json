@@ -1,0 +1,24 @@
+{
+    "lodash": {
+        "js": "bower_components/lodash/lodash.min.js"
+    },
+    "jquery": {
+        "js": "bower_components/jquery/dist/jquery.min.js"
+    },
+    "bootstrap": {
+        "js": "bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js",
+        "fonts": "bower_components/bootstrap-sass/assets/fonts/**/*"
+    },
+    "font-awesome": {
+        "fonts": "bower_components/font-awesome/fonts/*"
+    },
+    "angular": {
+        "js": "bower_components/angular/angular.min.js"
+    },
+    "angular-ui-router": {
+        "js": "bower_components/angular-ui-router/release/angular-ui-router.min.js"
+    },
+    "angular-cookies": {
+        "js": "bower_components/angular-cookies/angular-cookies.min.js"
+    }
+}

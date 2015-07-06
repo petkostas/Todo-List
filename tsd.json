@@ -1,0 +1,24 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "devassets/typescript/typings",
+  "bundle": "devassets/typescript/typings/tsd.d.ts",
+  "installed": {
+    "jquery/jquery.d.ts": {
+      "commit": "d73cbcb405788eb85cc4a4167b963ef4dd630cdc"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "d73cbcb405788eb85cc4a4167b963ef4dd630cdc"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "d73cbcb405788eb85cc4a4167b963ef4dd630cdc"
+    },
+    "angular-ui-router/angular-ui-router.d.ts": {
+      "commit": "ab3cc82066805007cbf0db233ddb5879f42be4d2"
+    },
+    "angularjs/angular-cookies.d.ts": {
+      "commit": "625cd68fed45e3230393af71bcde1d36706f3d56"
+    }
+  }
+}

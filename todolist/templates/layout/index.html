@@ -1,0 +1,35 @@
+<!DOCTYPE html>{% load static i18n %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}SendCloud - To Do List{% endblock title %}</title>
+        <link rel="stylesheet" href="{% static "css/app.min.css" %}">
+        <meta name="description" content="{% block description %}{% endblock description %}">
+        <meta name="mobile-web-app-capable" content="yes">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+	<body class="{% block bodyclass %}mainpage{% endblock %}" ng-app="app">
+		<header class="container-fluid">
+			{% include "layout/partials/_header.html" %}
+		</header>
+		{% block content %}
+		{% endblock content %}
+		<footer class="container-fluid" id="mainfooter">
+			<div class="row">
+				<div class="col-md-4 left-col"></div>
+				<div class="col-md-4 middle-col"></div>
+				<div class="col-md-4 right-col"></div>
+			</div>
+		</footer>
+		<script src="{% static "js/vendors.min.js" %}"></script>
+        {% block extrajsscripts %}{% endblock extrajsscripts %}
+        <script src="{% static "js/app-templates.min.js" %}"></script>
+        <script src="{% static "js/app.min.js" %}"></script>
+        {% block extrajs %}{% endblock extrajs %}
+	</body>
+</html>

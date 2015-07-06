@@ -1,0 +1,10 @@
+<div class="lists">
+	<div class="item-widget center-block" ng-repeat="list in listitems.lists track by list.id" tooltip="{{ list.description }}" ng-class="listitems.getListClass(list)">
+		<span class="title" title="Click to view list details" data-toggle="tooltip" data-placement="top" ui-sref="viewlist({listID: list.id})">
+			{{ list.title }}
+		</span>
+		<span class="status" ng-click="listitems.toggleList(list)">
+			<i class="fa" ng-class="{'fa-circle-o':!list.status, 'fa-check-circle-o':list.status }" data-toggle="tooltip" title="Click to Toggle List status" data-placement="top"></i>
+		</span>
+	</div>
+</div>

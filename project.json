@@ -1,0 +1,39 @@
+{
+    "sources" : {
+        "folders": {
+            "assets": "devassets",
+            "typescript": "devassets/typescript/src/app/"
+        },
+        "files": {
+            "siteimages": "devassets/images/**/*",
+            "sitecss": "devassets/scss/app.scss",
+            "scss": "devassets/typescript/src/app/**/*.scss",
+            "typescript": "devassets/typescript/src/app/**/*.ts",
+            "typings": "devassets/typescript/typings/**/*.d.ts",
+            "angulartemplates": "devassets/typescript/src/app/**/*.tpl.html"
+        }
+    },
+    "destinations" : {
+        "folders": {
+            "assets": "static",
+            "js": "static/js",
+            "css": "static/css",
+            "images": "static/images",
+            "fonts": "static/fonts"
+        },
+        "files": {
+            "js": "app.js",
+            "minjs": "app.min.js",
+            "css": "app.css",
+            "mincss": "app.min.css",
+            "vendorjs": "vendors.min.js",
+            "vendorcss": "vendors.min.css",
+            "templatecache": "app-templates.min.js"
+        }
+    },
+    "watchers": {
+        "scss": "devassets/scss/**/*.scss",
+        "typescript": "devassets/typescript/src/app/**/*.ts",
+        "angulartemplates": "devassets/typescript/src/app/**/*.tpl.html"
+    }
+}

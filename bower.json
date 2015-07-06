@@ -1,0 +1,29 @@
+{
+  "name": "To Do List",
+  "version": "1.0.0",
+  "authors": [
+    "Kostas Petrakis <petkostas@gmail.com>"
+  ],
+  "description": "Sample To Do List utilizing Django + Angular",
+  "keywords": [
+    "Django",
+    "Angular",
+    "REST"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "angular": "~1.4.1",
+    "jquery": "~2.1.4",
+    "font-awesome": "~4.3.0",
+    "lodash": "~3.10.0",
+    "angular-ui-router": "~0.2.15",
+    "angular-cookies": "~1.4.1"
+  }
+}

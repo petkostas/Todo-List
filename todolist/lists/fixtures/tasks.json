@@ -1,0 +1,50 @@
+[
+  {
+    "model": "lists.listtaskmodel",
+    "pk": 1,
+    "fields": {
+      "title": "Test Item 1",
+      "description": "Test Item 1 description",
+      "flag_done": true,
+      "tasklist": 1,
+      "created_at": "2015-02-01T19:34:00+03:00",
+      "modified_at": "2015-01-01T10:15:00+03:00"
+    }
+  },
+  {
+    "model": "lists.listtaskmodel",
+    "pk": 2,
+    "fields": {
+      "title": "Test Item 2",
+      "description": "Test Item 2 description",
+      "flag_done": true,
+      "tasklist": 1,
+      "created_at": "2015-02-01T19:34:00+03:00",
+      "modified_at": "2015-01-01T10:15:00+03:00"
+    }
+  },
+  {
+    "model": "lists.listtaskmodel",
+    "pk": 3,
+    "fields": {
+      "title": "Test Item 3",
+      "description": "Test Item 3 description",
+      "flag_done": true,
+      "tasklist": 2,
+      "created_at": "2015-02-01T19:34:00+03:00",
+      "modified_at": "2015-01-01T10:15:00+03:00"
+    }
+  },
+  {
+    "model": "lists.listtaskmodel",
+    "pk": 4,
+    "fields": {
+      "title": "Test Item 4",
+      "description": "Test Item 4 description",
+      "flag_done": false,
+      "tasklist": 3,
+      "created_at": "2015-02-01T19:34:00+03:00",
+      "modified_at": "2015-01-01T10:15:00+03:00"
+    }
+  }
+]

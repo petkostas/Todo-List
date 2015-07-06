@@ -1,0 +1,20 @@
+// #####################
+// VENDORS
+// PROJECT INCLUDES
+// #####################
+@import '../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap';
+@import '../../bower_components/font-awesome/scss/font-awesome';
+@import 'includes/variables';
+@import 'includes/colors';
+@import 'includes/mixins';
+@import 'includes/general';
+
+// #####################
+// Project Related
+// #####################
+@import 'project/footer';
+@import 'project/users/login';
+@import 'project/users/register';
+@import 'project/lists/todolist';
+@import 'project/lists/todoaddlist';
+@import 'project/lists/todotasks';

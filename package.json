@@ -1,0 +1,23 @@
+{
+  "name": "ToDoList",
+  "version": "1.0.0",
+  "description": "Django + Angular + REST Todo List sample project",
+  "author": "Kostas Petrakis <petkostas@gmail.com>",
+  "dependencies": {
+    "bower": "^1.4.1",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.7.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-sass": "^2.0.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-tsd": "0.0.4",
+    "gulp-typescript": "^2.7.8",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.2.4",
+    "lodash": "^3.10.0",
+    "merge-stream": "^0.1.8",
+    "tsd": "^0.6.3"
+  }
+}

@@ -1,0 +1,2 @@
+--requirement=requirements.txt
+coverage==3.7.1
