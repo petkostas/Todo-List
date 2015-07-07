@@ -1,10 +1,19 @@
 <div class="tasks">
 	<div class="item-widget center-block" ng-repeat="task in taskitems.tasks track by task.id" tooltip="{{ task.description }}">
-		<span class="title">
+		<span class="title" ng-click="taskitems.modifyTask(task)">
 			{{ task.title }}
 		</span>
 		<span class="status" ng-click="taskitems.toggletask(task)">
 			<i class="fa" ng-class="{'fa-circle-o':!task.flag_done, 'fa-check-circle-o':task.flag_done }" data-toggle="tooltip" title="Click to Toggle Task status" data-placement="top" ng-click="taskitems.toggleTask(task)"></i>
 		</span>
+		<div class="edit-task-actions" ng-if="taskitems.editing && taskitems.edititem === task">
+			<edit-task data-task="taskitems.edititem" data-on-save="taskitems.save(task)" data-on-cancel="taskitems.cancel()"></edit-task>
+		</div>
+	</div>
+	<div class="add-task-actions" ng-if="taskitems.adding">
+		<add-task data-list-id="{{taskscntrl.listId}}" data-on-add="taskitems.addNewTask(task)" data-on-cancel="taskitems.cancel()"></add-task>
+	</div>
+	<div class="add-task-actions text-center">
+		<button class="btn btn-primary add-new-task" ng-click="taskitems.addTask()"><i class="fa fa-plus icon"></i>Add a new Task</button>
 	</div>
 </div>

@@ -5,6 +5,7 @@ from rest_framework.test import (
 )
 from lists.models import (
     ListModel,
+    ListTaskModel
 )
 
 
@@ -128,7 +129,7 @@ class RestListModelTests(APITestCase):
         deletedlistcount = ListModel.objects.get_archived_lists().count()
         self.assertEqual(
             deletedlistcount,
-            2
+            1
         )
 
     def test_we_can_update_list(self):
@@ -191,4 +192,77 @@ class RestListModelTests(APITestCase):
         self.assertEqual(
             newlist.title,
             list_data['title']
+        )
+
+    def test_we_can_create_a_task(self):
+        """
+        Ensure that a valid user can create a task.
+        """
+        self.client.login(
+            username='testuser', password='12345')
+        task_create_url = reverse(
+            'rest:lists:tasks:create',
+        )
+        task_data = {
+            'title': 'A New Task',
+            'description': 'A New Task description',
+            'tasklist': 1
+        }
+        rsp = self.client.post(
+            task_create_url,
+            task_data
+        )
+        self.assertEqual(
+            rsp.status_code,
+            status.HTTP_201_CREATED
+        )
+        newtask = ListTaskModel.objects.get(pk=rsp.data['id'])
+        self.assertEqual(
+            newtask.title,
+            task_data['title']
+        )
+
+    def test_anon_user_cannot_create_a_task(self):
+        """
+        Ensure anonymous users cannot create tasks.
+        """
+        task_create_url = reverse(
+            'rest:lists:tasks:create',
+        )
+        task_data = {
+            'title': 'A New Task for non existing user',
+            'description': 'A New Task non existing user task',
+            'tasklist': 1
+        }
+        rsp = self.client.post(
+            task_create_url,
+            task_data
+        )
+        self.assertEqual(
+            rsp.status_code,
+            status.HTTP_403_FORBIDDEN
+        )
+
+    def test_non_owner_cannot_create_a_task(self):
+        """
+        Ensure that a valid and logged in user that does not own
+        a list cannot create a task in it.
+        """
+        self.client.login(
+            username='testuser2', password='12345')
+        task_create_url = reverse(
+            'rest:lists:tasks:create',
+        )
+        task_data = {
+            'title': 'A New Task for non existing user',
+            'description': 'A New Task non existing user task',
+            'tasklist': 1
+        }
+        rsp = self.client.post(
+            task_create_url,
+            task_data
+        )
+        self.assertEqual(
+            rsp.status_code,
+            status.HTTP_403_FORBIDDEN
         )

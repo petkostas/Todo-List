@@ -35,7 +35,14 @@ module app.lists.tasks {
             return this.$http.patch(
                 this.urlService.parseUrl('tasks.update', { 'pk': task_id }),
                 { 'id': task_id, 'flag_done': status }
-                );
+            );
+        }
+
+        updateTask(task: app.lists.tasks.TaskItem): ng.IPromise<any> {
+            return this.$http.patch(
+                this.urlService.parseUrl('tasks.update', {'pk': task.id }),
+                task
+            );
         }
     }
 }

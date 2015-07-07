@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from lists.rest import views
 
 listpatterns = [
@@ -9,17 +9,17 @@ listpatterns = [
     ),
     url(
         r'^destroy/(?P<pk>[\d]+)/$',
-        views.ListModelCRUDView.as_view(),
+        views.ListModelRUDView.as_view(),
         name='destroy'
     ),
     url(
         r'^update/(?P<pk>[\d]+)/$',
-        views.ListModelCRUDView.as_view(),
+        views.ListModelRUDView.as_view(),
         name='update'
     ),
     url(
         r'^toggle/(?P<pk>[\d]+)/$',
-        views.ListModelCRUDView.as_view(),
+        views.ListModelRUDView.as_view(),
         name='toggle'
     ),
     url(
@@ -36,15 +36,22 @@ listpatterns = [
 
 taskpatterns = [
     url(
-        r'^tasks/create/$',
+        r'^create/$',
         views.ListTaskCreateView.as_view(),
-        name='tasks-create'
+        name='create'
     ),
     url(
-        r'^tasks/update/(?P<pk>[\d]+)/$',
-        views.ListTaskCRUDView.as_view(),
-        name='tasks-update'
+        r'^update/(?P<pk>[\d]+)/$',
+        views.ListTaskRUDView.as_view(),
+        name='update'
     )
 ]
 
-urlpatterns = listpatterns + taskpatterns
+tasks = [
+    url(
+        r'^tasks/',
+        include(taskpatterns, namespace='tasks'),
+    )
+]
+
+urlpatterns = listpatterns + tasks

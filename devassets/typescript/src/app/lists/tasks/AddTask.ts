@@ -3,63 +3,43 @@ module app.lists {
 
     export class AddTask {
 
-        showform: boolean = false;
-        task = <app.lists.tasks.TaskItem>{};
-        tasks: app.lists.tasks.TaskItem[];
-        tasklistId: number;
+        task: app.lists.tasks.TaskItem = {
+            id: 0,
+            title: null,
+            description: null,
+            flag_done: false,
+            tasklist: null
+        };
+        listid: number;
+        onAdd: (param: {task: app.lists.tasks.TaskItem}) => any;
+        onCancel: () => any;
 
-        static $inject = [
-            'taskService'
-        ];
-
-        constructor(
-            private taskService: app.lists.tasks.TaskService
-        ){
+        constructor(){
+            this.task.tasklist = this.listid;
         }
 
-        private _reset() {
-            this.task = <app.lists.tasks.TaskItem>{};
+        add(): void {
+            this.onAdd({task: this.task});
         }
 
-        toggleForm() {
-            this.showform = !this.showform;
-        }
-
-        addList() {
-            this.task.tasklist = this.tasklistId;
-            this.task.flag_done = false;
-            this.taskService.addNewTask(this.task).then((results: any) => {
-                this.tasks.push(_.clone(results.data));
-            });
-            this._reset();
-        }
-
-        cancelTask() {
-            this._reset();
-            this.showform = false;
+        cancel(): void {
+            this.onCancel();
         }
 
         static directive(): ng.IDirective {
             return {
                 restrict: 'E',
                 controller: AddTask,
-                controllerAs: 'addtaskcntrl',
+                controllerAs: 'addtask',
                 bindToController: true,
                 templateUrl: 'lists/tasks/AddTask.tpl.html',
                 replace: true,
                 scope: {
-                    tasks: '=',
-                    tasklistId: '@listId'
-                },
-                link: AddTask.link
+                    onAdd: '&',
+                    onCancel: '&',
+                    listid: '@listId'
+                }
             };
-        }
-
-        private static link(
-            scope: ng.IScope, element: ng.IAugmentedJQuery,
-            attrs: ng.IAttributes, controller: AddTask)
-        {
-
         }
     }
 }

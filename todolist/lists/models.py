@@ -81,17 +81,12 @@ class ListModel(models.Model):
     def __str__(self):
         return u'%s' % self.title
 
-    def delete(self, force=False):
+    def toggle_list(self):
         """
-        Override default delete method, in order to introduce
-        archiving of the List, we don't want to actually delete the
-        item unless we force to.
+        This allows us to set the List as active or as archived.
         """
-        if force is True:
-            super(ListModel, self).delete()
-        else:
-            self.status = False
-            self.save()
+        self.status = not self.status
+        self.save()
 
 
 class ListTaskMananger(models.Manager):

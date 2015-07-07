@@ -4,9 +4,8 @@
 			<h2 class="text-center">Your ToDo Lists</h2>
 		</header>
 		<div class="tasks">
-			<task-items data-tasks="taskscntrl.tasks"></task-items>
+			<task-items data-tasks="taskscntrl.tasks" listid="{{taskscntrl.listId}}"></task-items>
 		</div>
-		<add-task data-tasks="taskscntrl.tasks" data-list-id="{{taskscntrl.listId}}"></add-task>
 	</div>
 	<div class="action-groups">
 		<button ui-sref="home" class="btn btn-default">

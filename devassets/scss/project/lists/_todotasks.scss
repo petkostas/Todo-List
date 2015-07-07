@@ -48,6 +48,15 @@
 					color: $active-item;
 				}
 			}
+
+			.add-task-actions {
+				.add-new-task {
+					margin: 10px;
+					i {
+						margin-right: 8px;
+					}
+				}
+			}
 		}
 	}
 }

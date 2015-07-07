@@ -7,13 +7,31 @@
 			"first_name": "Test",
 			"last_name": "User",
 			"is_active": true,
-			"is_superuser": true,
-			"is_staff": true,
+			"is_superuser": false,
+			"is_staff": false,
 			"last_login": null,
 			"groups": [],
 			"user_permissions": [],
 			"password": "pbkdf2_sha256$20000$5xfiSodlTFmw$2TVHCX0KEg5dcWP5ftsfE45fseROB4QERLNaAwrTz9Q=",
 			"email": "testuser@example.com",
+			"date_joined": "2015-06-30T10:15:00+03:00"
+		}
+	},
+	{
+		"model": "auth.user",
+		"pk": 2,
+		"fields": {
+			"username": "testuser2",
+			"first_name": "Test2",
+			"last_name": "User2",
+			"is_active": true,
+			"is_superuser": false,
+			"is_staff": false,
+			"last_login": null,
+			"groups": [],
+			"user_permissions": [],
+			"password": "pbkdf2_sha256$20000$5xfiSodlTFmw$2TVHCX0KEg5dcWP5ftsfE45fseROB4QERLNaAwrTz9Q=",
+			"email": "testuser2@example.com",
 			"date_joined": "2015-06-30T10:15:00+03:00"
 		}
 	}

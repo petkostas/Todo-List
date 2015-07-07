@@ -32,37 +32,17 @@ class ListModelTestCase(TestCase):
             new_list.full_clean()
             new_list.save()
 
-    def test_delete_does_not_delete_from_db(self):
-        """If we delete a List it should not be deleted in the DB, but
-        rather be marked as deleted."""
-        title = "To do List"
-        mylist = ListModel.objects.get(title=title)
-        self.assertEqual(
-            mylist.status,
-            True
-        )
-        mylist.delete()
-        listcount = ListModel.objects.count()
-        self.assertEqual(
-            listcount,
-            3
-        )
-        self.assertEqual(
-            mylist.status,
-            False
-        )
-
-    def test_delete_with_force_deletes(self):
+    def test_we_can_toggle_a_list(self):
         """
-        Test that if we force the deletion of a list, it is actually
-        removed from the DB.
+        Test that we can toggle a list within the DB.
         """
+        prev_list_count = ListModel.objects.get_active_lists().count()
         list = ListModel.objects.get_active_lists().all()[0]
-        list.delete(True)
-        listcount = ListModel.objects.get_lists().count()
-        self.assertEqual(
-            listcount,
-            2
+        list.toggle_list()
+        listcount = ListModel.objects.get_active_lists().count()
+        self.assertGreater(
+            prev_list_count,
+            listcount
         )
 
     def test_str_returns_title(self):

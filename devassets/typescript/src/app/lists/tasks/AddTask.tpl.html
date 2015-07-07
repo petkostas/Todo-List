@@ -1,21 +1,18 @@
 <div class="add-task-holder center-block text-center">
-	<div class="add-task-form" ng-show="addtaskcntrl.showform">
-		<form name="addListForm" class="task-form">
+	<div class="add-task-form">
+		<form name="add-task" class="task-form">
 			<div class="form-group">
 				<label for="title">Task Title</label>
-				<input type="text" class="form-control" id="title" placeholder="Task Title" ng-model="addtaskcntrl.task.title">
+				<input type="text" class="form-control" id="title" placeholder="Task Title" ng-model="addtask.task.title">
 			</div>
 			<div class="form-group">
 				<label for="description">Task Description</label>
-				<input type="text" class="form-control" id="description" placeholder="Task Description" ng-model="addtaskcntrl.task.description">
+				<input type="text" class="form-control" id="description" placeholder="Task Description" ng-model="addtask.task.description">
 			</div>
 			<div class="form-group">
-				<input type="submit" class="btn btn-default add-task" value="Add Task" ng-click="addtaskcntrl.addList()">
-				<button class="btn btn-danger cancel" ng-click="addtaskcntrl.cancelTask()">Cancel</button>
+				<input type="submit" class="btn btn-default add-task" value="Add Task" ng-click="addtask.add()">
+				<button class="btn btn-danger cancel" ng-click="addtask.cancel()">Cancel</button>
 			</div>
 		</form>
-	</div>
-	<div class="add-task-actions text-center">
-		<button class="btn btn-primary add-new-task" ng-click="addtaskcntrl.toggleForm()"><i class="fa fa-plus icon"></i>Add a new Task</button>
 	</div>
 </div>
