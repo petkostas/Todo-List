@@ -48,6 +48,15 @@
 					color: $active-item;
 				}
 			}
+
+			.list-actions {
+				.add-new-list {
+					margin: 10px;
+					i {
+						margin-right: 8px;
+					}
+				}
+			}
 		}
 	}
 }

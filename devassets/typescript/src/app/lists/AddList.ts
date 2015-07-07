@@ -4,58 +4,43 @@ module app.lists {
     export class AddList {
 
         showform: boolean = false;
-        list = <app.lists.ListItem>{};
-        lists: app.lists.ListItem[];
+        list: app.lists.ListItem = {
+            id: 0,
+            title: null,
+            description: null,
+            status: true
+        };
+        onAdd: (param:{list: app.lists.ListItem}) => any;
+        onCancel: () => any;
 
-        static $inject = [
-            'listsService'
-        ];
-
-        constructor(
-            private listsService: app.lists.ListsService
-        ){
-        }
+        constructor(){}
 
         private _reset() {
             this.list = <app.lists.ListItem>{};
         }
 
-        toggleForm() {
-            this.showform = !this.showform;
+        add(): void {
+            this.onAdd({list: this.list});
         }
 
-        addList() {
-            this.listsService.addNewList(this.list).then((results: any) => {
-                this.lists.push(_.clone(results.data));
-            });
-            this._reset();
-        }
-
-        cancelList() {
-            this._reset();
-            this.showform = false;
+        cancel(): void {
+            this.onCancel();
         }
 
         static directive(): ng.IDirective {
             return {
                 restrict: 'E',
                 controller: AddList,
-                controllerAs: 'addlistcntrl',
+                controllerAs: 'listcntrl',
                 bindToController: true,
                 templateUrl: 'lists/AddList.tpl.html',
                 replace: true,
                 scope: {
-                    lists: '='
-                },
-                link: AddList.link
+                    lists: '=',
+                    onAdd: '&',
+                    onCancel: '&'
+                }
             };
-        }
-
-        private static link(
-            scope: ng.IScope, element: ng.IAugmentedJQuery,
-            attrs: ng.IAttributes, controllers: any)
-        {
-
         }
     }
 }

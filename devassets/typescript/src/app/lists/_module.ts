@@ -8,5 +8,6 @@ module app.lists {
         .controller('listCntrl', ListCntrl)
         .directive('listItems', ListItems.directive)
         .directive('addList', AddList.directive)
+        .directive('editList', EditList.directive)
     ;
 }

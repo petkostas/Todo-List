@@ -3,8 +3,18 @@
 		<span class="title" title="Click to view list details" data-toggle="tooltip" data-placement="top" ui-sref="viewlist({listID: list.id})">
 			{{ list.title }}
 		</span>
-		<span class="status" ng-click="listitems.toggleList(list)">
+		<button class="btn btn-priority" ng-click="listitems.modifyList(list)">
+			Edit List
+		</button>
+		<span class="status" ng-click="listitems.toggle(list)">
 			<i class="fa" ng-class="{'fa-circle-o':!list.status, 'fa-check-circle-o':list.status }" data-toggle="tooltip" title="Click to Toggle List status" data-placement="top"></i>
 		</span>
+		<div class="edit-list-actions" ng-if="listitems.editing && listitems.edititem === list">
+			<edit-list data-list="listitems.edititem" data-on-save="listitems.save(list)" data-on-cancel="listitems.cancel()"></edit-list>
+		</div>
+	</div>
+	<add-list data-on-add="listitems.addNewList(list)" data-on-cancel="listitems.cancel()" ng-if="listitems.adding"></add-list>
+	<div class="list-actions text-center">
+		<button class="btn btn-primary add-new-list" ng-click="listitems.addList()"><i class="fa fa-plus icon"></i>Add a new List</button>
 	</div>
 </div>

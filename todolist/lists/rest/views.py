@@ -105,7 +105,8 @@ class ListModelRUDView(generics.RetrieveUpdateDestroyAPIView):
         """
         Assign the list owner to the currently logged in user.
         """
-        serializer.save(owner=self.request.user)
+        instance = serializer.save()
+        return instance
 
 
 class ListTaskCreateView(generics.CreateAPIView):

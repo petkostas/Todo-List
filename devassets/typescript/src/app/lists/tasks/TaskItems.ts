@@ -44,7 +44,7 @@ module app.lists.tasks {
             this.adding = false;
         }
 
-		modifyTask(task) {
+		modifyTask(task: app.lists.tasks.TaskItem) {
 			this.editing = true;
 			this.edititem = task;
 		}

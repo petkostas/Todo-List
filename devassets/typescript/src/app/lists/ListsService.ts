@@ -30,6 +30,13 @@ module app.lists {
             );
         }
 
+        updateList(list_id: number, list: app.lists.ListItem): ng.IPromise<any> {
+            return this.$http.patch(
+                this.urlService.parseUrl('lists.update', {'pk': list_id}),
+                list
+            )
+        }
+
         toggleList(list_id: number, status: boolean): ng.IPromise<any> {
             return this.$http.patch(
                 this.urlService.parseUrl('lists.update', {'pk': list_id}),
