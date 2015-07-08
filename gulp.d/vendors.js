@@ -84,5 +84,5 @@ gulp.task('build.vendors', [
 
 gulp.task('clean.vendors', function(){
   console.log("Cleaning build asset directory");
-  del(settings.destinations.folders.assets);
+  del(settings.destinations.folders.assets, {force: true});
 });
