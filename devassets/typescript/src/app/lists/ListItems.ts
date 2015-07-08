@@ -27,8 +27,8 @@ module app.lists {
 
         get listcount() {
             var lists: any = _.cloneDeep(this.lists);
-            return _.remove(lists, function(list){
-                list.status = false;
+            return _.remove(lists, function(list: app.lists.ListItem){
+                return list.status == false;
             }).length;
         }
 
@@ -91,16 +91,6 @@ module app.lists {
             scope: ng.IScope, element: ng.IAugmentedJQuery,
             attrs: ng.IAttributes, controller: ListItems)
         {
-            var $tooltip_items = angular.element(
-                document.getElementsByClassName('list-actions')
-            );
-            console.log($tooltip_items);
-            _.forEach($tooltip_items, ($tooltip_item) => {
-                if( angular.element($tooltip_item).data('toggle') ) {
-                    var mytooltip: any = angular.element($tooltip_item);
-                    mytooltip.tooltip();
-                }
-            });
         }
     }
 }

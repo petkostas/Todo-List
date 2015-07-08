@@ -1,3 +1,6 @@
 .add-task-holder {
 	padding: 20px;
+	margin: 10px;
+	@extend .widget-box;
+	background-color: $grey-light;
 }

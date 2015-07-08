@@ -1,6 +1,12 @@
 <div class="lists">
 	<header class="lists-header">
-		<p>You have <span class="count">{{ listitems.listcount }}</span> lists.
+		<p>
+			<ng-pluralize count="listitems.listcount"
+                when="{'0': 'You have no Todo Lists.',
+                       '1': 'You have 1 active list.',
+                       'other': 'You have {} active lists.'}">
+  			</ng-pluralize>
+  		</p>
 	</header>
 	<div class="item-widget center-block" ng-repeat="list in listitems.lists track by list.id" tooltip="{{ list.description }}" ng-class="{'marked-done':list.status, 'marked-pending':!list.status}" ng-style="{'opacity': list.status ? 0.5 : 1}">
 		<span class="title" title="Click to view list details" data-toggle="tooltip" data-placement="top" ui-sref="viewlist({listID: list.id})" ng-style="{'text-decoration': list.status ? 'line-through' : 'none'}">

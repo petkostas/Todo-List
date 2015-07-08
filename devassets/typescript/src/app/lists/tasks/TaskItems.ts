@@ -27,6 +27,13 @@ module app.lists.tasks {
 		) {
 		}
 
+        get taskcount() {
+            var tasks: any = _.cloneDeep(this.tasks);
+            return _.remove(tasks, function(task: app.lists.tasks.TaskItem){
+                return task.flag_done == false;
+            }).length;
+        }
+
 		toggleTask(task: app.lists.tasks.TaskItem) {
 			task.flag_done = !task.flag_done;
 			this.taskService.toggleTask(task.id, task.flag_done);

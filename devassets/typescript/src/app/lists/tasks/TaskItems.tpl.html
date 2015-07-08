@@ -1,6 +1,12 @@
 <div class="tasks">
 	<header class="tasks-header">
-		<p>You have <span class="count">{{ taskitems.tasks.length }}</span> tasks.
+		<p>
+			<ng-pluralize count="taskitems.taskcount"
+                when="{'0': 'You have no tasks.',
+                       '1': 'You have 1 uncompleted task.',
+                       'other': 'You have {} uncompleted tasks.'}">
+  			</ng-pluralize>
+  		</p>
 	</header>
 	<div class="item-widget center-block" ng-repeat="task in taskitems.tasks track by task.id" tooltip="{{ task.description }}" ng-class="{'marked-done':task.flag_done, 'marked-pending':!task.flag_done}" ng-disabled="{{task.flag_done}}" ng-style="{'opacity': task.flag_done ? 0.5 : 1}">
 		<span class="title" ng-click="taskitems.modifyTask(task)" ng-style="{'text-decoration': task.flag_done ? 'line-through' : 'none'}">
