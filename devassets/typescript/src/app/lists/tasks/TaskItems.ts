@@ -78,7 +78,23 @@ module app.lists.tasks {
 				scope: {
 					tasks: '=',
 					listid: '@'
-				}
+				},
+				link: TaskItems.link
+			};
+		}
+
+		private static link(
+			scope: ng.IScope, element: ng.IAugmentedJQuery,
+			attrs: ng.IAttributes, controller: TaskItems
+		){
+			var myscope: any = scope;
+			myscope.filterTasks = () => {
+				var $marked_done = angular.element(
+					document.getElementsByClassName('marked-done')
+				);
+				_.forEach($marked_done, (elem: any) => {
+					angular.element(elem).toggleClass('hidden');
+				});
 			};
 		}
 	}

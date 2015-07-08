@@ -1,6 +1,9 @@
 <div class="lists">
-	<div class="item-widget center-block" ng-repeat="list in listitems.lists track by list.id" tooltip="{{ list.description }}" ng-class="listitems.getListClass(list)">
-		<span class="title" title="Click to view list details" data-toggle="tooltip" data-placement="top" ui-sref="viewlist({listID: list.id})">
+	<header class="lists-header">
+		<p>You have <span class="count">{{ listitems.listcount }}</span> lists.
+	</header>
+	<div class="item-widget center-block" ng-repeat="list in listitems.lists track by list.id" tooltip="{{ list.description }}" ng-class="{'marked-done':list.status, 'marked-pending':!list.status}" ng-style="{'opacity': list.status ? 0.5 : 1}">
+		<span class="title" title="Click to view list details" data-toggle="tooltip" data-placement="top" ui-sref="viewlist({listID: list.id})" ng-style="{'text-decoration': list.status ? 'line-through' : 'none'}">
 			{{ list.title }}
 		</span>
 		<button class="btn btn-priority" ng-click="listitems.modifyList(list)">

@@ -99,14 +99,7 @@ class ListModelRUDView(generics.RetrieveUpdateDestroyAPIView):
     renderer_classes = (JSONRenderer,)
     serializer_class = serializers.ListSerializer
     authentication_classes = (SessionAuthentication,)
-    permission_classes = (IsAuthenticated,)
-
-    def perform_update(self, serializer):
-        """
-        Assign the list owner to the currently logged in user.
-        """
-        instance = serializer.save()
-        return instance
+    permission_classes = (IsAuthenticated, IsOwnerOrDeny)
 
 
 class ListTaskCreateView(generics.CreateAPIView):

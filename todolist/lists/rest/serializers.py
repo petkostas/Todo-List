@@ -39,11 +39,6 @@ class ListSerializer(serializers.ModelSerializer):
             'username': obj.owner.get_username()
         }
 
-    def update(self, instance, validated_data):
-        instance.owner = validated_data.get('owner', instance.owner)
-        instance.save()
-        return instance
-
 
 class TaskSerializer(serializers.ModelSerializer):
     """

@@ -1,6 +1,9 @@
 <div class="tasks">
-	<div class="item-widget center-block" ng-repeat="task in taskitems.tasks track by task.id" tooltip="{{ task.description }}">
-		<span class="title" ng-click="taskitems.modifyTask(task)">
+	<header class="tasks-header">
+		<p>You have <span class="count">{{ taskitems.tasks.length }}</span> tasks.
+	</header>
+	<div class="item-widget center-block" ng-repeat="task in taskitems.tasks track by task.id" tooltip="{{ task.description }}" ng-class="{'marked-done':task.flag_done, 'marked-pending':!task.flag_done}" ng-disabled="{{task.flag_done}}" ng-style="{'opacity': task.flag_done ? 0.5 : 1}">
+		<span class="title" ng-click="taskitems.modifyTask(task)" ng-style="{'text-decoration': task.flag_done ? 'line-through' : 'none'}">
 			{{ task.title }}
 		</span>
 		<span class="status" ng-click="taskitems.toggletask(task)">
@@ -13,7 +16,11 @@
 	<div class="add-task-actions" ng-if="taskitems.adding">
 		<add-task data-list-id="{{taskscntrl.listId}}" data-on-add="taskitems.addNewTask(task)" data-on-cancel="taskitems.cancel()"></add-task>
 	</div>
-	<div class="add-task-actions text-center">
+	<div class="task-actions text-center">
+		<button ui-sref="home" class="btn btn-primary">
+			Back to To Do Lists
+		</button>
 		<button class="btn btn-primary add-new-task" ng-click="taskitems.addTask()"><i class="fa fa-plus icon"></i>Add a new Task</button>
+		<button class="btn btn-primary filter-tasks" ng-click="filterTasks(this)"><i class="fa fa-filter"></i>Filter completed tasks</button>
 	</div>
 </div>

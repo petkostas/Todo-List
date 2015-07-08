@@ -21,5 +21,9 @@ module app.lists {
                 this.lists = data.data;
             });
         }
+
+        get username(): string {
+            return this.userService.User.username;
+        }
     }
 }

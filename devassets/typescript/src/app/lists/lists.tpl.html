@@ -1,8 +1,13 @@
 <div class="list-container">
 	<div class="list-box">
 		<header class="list-box-header">
-			<h2 class="text-center">Your ToDo Lists</h2>
+			<h2 class="text-center">To Do Lists</h2>
 		</header>
+		<div class="welcome">
+			<p>
+				Hello {{ listcntrl.username }}, bellow you can find your ToDo Lists.
+			</p>
+		</div>
 		<div class="lists">
 			<list-items data-lists="listcntrl.lists"></list-items>
 		</div>
