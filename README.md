@@ -91,10 +91,9 @@ If you are deploying for a production like system, you will find some sample con
 
 In order to run as a test app, you can always use the internal testserver of Django (*not for production*):
 
-!shell
-======
-
+```
 python manage.py runserver <ipaddress>:<port>
+```
 
 ### Who do I talk to?
 
