@@ -46,7 +46,7 @@ module app {
                 'home', {
                     url: '/',
                     templateUrl: 'lists/lists.tpl.html',
-                    controller: 'listCntrl',
+                    controller: app.lists.ListCntrl,
                     controllerAs: 'listcntrl'
                 }
             )

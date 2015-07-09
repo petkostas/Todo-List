@@ -46,6 +46,7 @@ module app.users {
 
         private resetUser() {
             this.$cookies.remove('userAccount');
+            this._hasLogged = false;
         }
 
         logUser(user: app.users.LoginUser) {
@@ -68,17 +69,22 @@ module app.users {
         }
 
         logout() {
-            return this.$http.post(
+            this.$http.post(
                 this.urlService.parseUrl('user.logout'),
                 {}
-            );
+            ).then( (results:any) => {
+                this.resetUser();
+                this.$location.path('/users/login/');
+            });
             this.resetUser();
         }
 
         checkIfLogged() {
             if( this.hasLogged() == false ) {
                 this.$location.path('/users/login/');
+                return false;
             }
+            return true;
         }
 
         registerUser(user = {}) {

@@ -3,5 +3,6 @@ module app.users {
 
     angular.module('app.users', [])
         .service('userService', UserService)
+        .directive('userLogout', UserLogout.directive)
     ;
 }

@@ -16,14 +16,18 @@ module app.lists {
             private listsService: app.lists.ListsService,
             private $location: ng.ILocationService
         ) {
-            this.userService.checkIfLogged();
-            this.listsService.getLists().then( (data) => {
-                this.lists = data.data;
-            });
+            if( this.userService.checkIfLogged() ) {
+                this.listsService.getLists().then( (data) => {
+                    this.lists = data.data;
+                });
+            }
         }
 
-        get username(): string {
-            return this.userService.User.username;
+        get username(): any {
+            if( this.userService.hasLogged() ) {
+                return this.userService.User.username;
+            }
+            return null;
         }
     }
 }
